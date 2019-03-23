@@ -1,0 +1,5 @@
+width=0.1016
+height=0.1778
+distance=1
+normalized_width=0.1
+normalized_height=0.1
