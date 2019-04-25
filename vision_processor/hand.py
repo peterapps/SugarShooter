@@ -49,17 +49,17 @@ class HandDetector:
 		# Calculate position
 		x = n_x * self.calibration['width'] / n_w
 		y = n_y * self.calibration['height'] / n_h
-		dist = cal_dist * n_w / cal_n_w
+		dist = 1.0 / (cal_dist * n_w / cal_n_w)
 		# Print debugging info
 		if debug:
 			print('')
-			print('Normalized x: {}'.format(n_x))
-			print('Normalized y: {}'.format(n_y))
-			print('Normalized width: {}'.format(n_w))
-			print('Normalized height: {}'.format(n_h))
-			#print('Horizontal shift (m): {}'.format(x))
-			#print('Vertical shift (m): {}'.format(y))
-			#print('Distance (m): {}'.format(dist))
+			#print('Normalized x: {}'.format(n_x))
+			#print('Normalized y: {}'.format(n_y))
+			#print('Normalized width: {}'.format(n_w))
+			#print('Normalized height: {}'.format(n_h))
+			print('Horizontal shift (m): {}'.format(x))
+			print('Vertical shift (m): {}'.format(y))
+			print('Distance (m): {}'.format(dist))
 		return frame, (x, y, dist)
 		
 		

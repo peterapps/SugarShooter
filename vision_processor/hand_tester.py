@@ -1,7 +1,7 @@
 import cv2
 import hand
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 cWidth = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
 cHeight = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
