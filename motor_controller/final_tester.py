@@ -1,19 +1,26 @@
 from Peter import *
-from Controls import Controls
+from Controls import *
 from time import sleep
+from gpiozero import PWMOutputDevice
 
 joy = Controls()
 
 sol = DoubleSolenoid(21, 20, 16, 13, 26, 19)
-pan = Motor(25, 24, 23)
-tilt = Motor(17, 22, 27)
+tilt = Motor(25, 24, 23)
+pan = PWMOutputDevice(pin=12, frequency=500)
+
+#comp = Compressor(12, 5)
+#comp.start()
 
 trigger_timer = 0
 trigger_bool = False
 
 while True:
+	#comp.update()
 	joy.update()
-	pan.set(joy.z)
+	if joy.z > 0.7: pan.value = 0.77
+	elif joy.z < -0.7: pan.value = 0.68
+	else: pan.value = 0
 	tilt.set(joy.y)
 	if joy.trigger == 1:
 		trigger_bool = True

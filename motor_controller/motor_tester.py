@@ -1,9 +1,9 @@
 from gpiozero import PWMOutputDevice, DigitalOutputDevice
 
 # Motor 1
-enable = PWMOutputDevice(pin=20, frequency=500)
-in1 = DigitalOutputDevice(pin=16)
-in2 = DigitalOutputDevice(pin=26)
+enable = PWMOutputDevice(pin=25, frequency=500)
+in1 = DigitalOutputDevice(pin=24)
+in2 = DigitalOutputDevice(pin=23)
 
 def set_motor(speed):
 	enable.value = abs(speed)

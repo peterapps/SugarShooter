@@ -1,4 +1,4 @@
-from gpiozero import PWMOutputDevice, DigitalOutputDevice
+from gpiozero import PWMOutputDevice, DigitalOutputDevice, DigitalInputDevice
 
 # Class for the L298N motor controller board
 class Motor:
@@ -33,6 +33,21 @@ class DoubleSolenoid:
 		else:
 			self.sol1.set(0)
 			self.sol2.set(0)
+
+# Using Spike
+class Compressor:
+	def __init__(self, signal_pin, switch_pin):
+		self.spike = PWMOutputDevice(pin=signal_pin, frequency=500)
+		self.switch = DigitalInputDevice(pin=switch_pin)
+	def start(self):
+		self.spike.value = 0
+	def stop(self):
+		self.spike.value = 0.5
+	def update(self):
+		if self.switch.value == 0:
+			self.stop()
+		else:
+			self.start()
 
 # Using Spike
 class DoubleSolenoidSpike:
